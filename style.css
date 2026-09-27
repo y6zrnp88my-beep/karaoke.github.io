@@ -1,0 +1,372 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+main {
+    padding: 30px;
+}
+
+/* Библиотека песен */
+.library-section h2,
+.player-section h2 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+}
+
+.upload-area {
+    margin-bottom: 30px;
+}
+
+.upload-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #667eea;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background 0.3s;
+}
+
+.upload-btn:hover {
+    background: #764ba2;
+}
+
+#file-upload {
+    display: none;
+}
+
+.song-list {
+    display: grid;
+    gap: 15px;
+}
+
+.song-item {
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.song-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.song-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.song-icon {
+    font-size: 2em;
+}
+
+.song-name {
+    font-size: 1.2em;
+    color: #333;
+    font-weight: 500;
+}
+
+.song-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-sing,
+.btn-delete {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+.btn-sing {
+    background: #667eea;
+    color: white;
+}
+
+.btn-sing:hover {
+    background: #764ba2;
+}
+
+.btn-delete {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #c82333;
+}
+
+/* Плеер */
+.player-section {
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+#current-song-title {
+    color: #667eea;
+    margin-bottom: 20px;
+}
+
+.audio-controls {
+    margin-bottom: 30px;
+}
+
+#audio-player {
+    width: 100%;
+    height: 50px;
+    border-radius: 10px;
+}
+
+.mic-controls {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.mic-controls h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.mic-select {
+    margin-bottom: 20px;
+}
+
+.mic-select label {
+    display: block;
+    margin-bottom: 10px;
+    color: #666;
+    font-weight: 500;
+}
+
+#mic-select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    background: white;
+    cursor: pointer;
+}
+
+.btn-record,
+.btn-stop {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: all 0.3s;
+}
+
+.btn-record {
+    background: #28a745;
+    color: white;
+}
+
+.btn-record:hover:not(:disabled) {
+    background: #218838;
+}
+
+.btn-stop {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-stop:hover:not(:disabled) {
+    background: #c82333;
+}
+
+.btn-record:disabled,
+.btn-stop:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.recording-status {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 10px;
+    background: #e9ecef;
+    text-align: center;
+}
+
+.recording-status.recording {
+    background: #d4edda;
+    border: 2px solid #28a745;
+}
+
+.recording-status.recording .status-text::before {
+    content: "🔴 ";
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+
+.status-text {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #333;
+}
+
+.recordings-section {
+    margin-top: 30px;
+}
+
+.recordings-section h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.recordings-list {
+    display: grid;
+    gap: 15px;
+}
+
+.recording-item {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recording-info {
+    flex: 1;
+}
+
+.recording-time {
+    color: #666;
+    font-size: 0.9em;
+    margin-bottom: 5px;
+}
+
+.recording-audio {
+    width: 100%;
+    max-width: 400px;
+    height: 40px;
+}
+
+.recording-actions {
+    margin-left: 15px;
+}
+
+.btn-download {
+    padding: 8px 16px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-download:hover {
+    background: #764ba2;
+}
+
+.btn-back {
+    margin-top: 30px;
+    padding: 12px 25px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background 0.3s;
+}
+
+.btn-back:hover {
+    background: #5a6268;
+}
+
+.empty-message {
+    text-align: center;
+    color: #999;
+    padding: 40px;
+    font-size: 1.1em;
+}
+
+@media (max-width: 768px) {
+    .container {
+        border-radius: 0;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .song-item {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .song-actions {
+        width: 100%;
+    }
+
+    .btn-sing,
+    .btn-delete {
+        flex: 1;
+    }
+}

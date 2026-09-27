@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Караоке</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎤 ПОДСТАВНОЕ КАРАОКЕ</h1>
+        </header>
+
+        <main>
+            <!-- Библиотека песен -->
+            <section class="library-section">
+                <h2>Библиотека песен</h2>
+                <div class="upload-area">
+                    <label for="file-upload" class="upload-btn">
+                        📁 Загрузить песню
+                    </label>
+                    <input type="file" id="file-upload" accept="audio/*" multiple>
+                </div>
+                <div id="song-list" class="song-list"></div>
+            </section>
+
+            <!-- Плеер -->
+            <section class="player-section" id="player-section" style="display: none;">
+                <h2 id="current-song-title">Песня</h2>
+                
+                <div class="audio-controls">
+                    <audio id="audio-player" controls></audio>
+                </div>
+
+                <div class="mic-controls">
+                    <h3>Микрофон</h3>
+                    <div class="mic-select">
+                        <label for="mic-select">Выберите микрофон:</label>
+                        <select id="mic-select"></select>
+                    </div>
+                    <button id="start-recording" class="btn-record">🎤 Начать петь</button>
+                    <button id="stop-recording" class="btn-stop" disabled>⏹️ Остановить</button>
+                </div>
+
+                <div class="recording-status" id="recording-status">
+                    <span class="status-text">Готов к записи</span>
+                </div>
+
+                <div class="recordings-section">
+                    <h3>Ваши записи</h3>
+                    <div id="recordings-list" class="recordings-list"></div>
+                </div>
+
+                <button id="back-to-library" class="btn-back">← Вернуться к библиотеке</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
